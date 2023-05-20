@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class ActionsBot(object):
     def __init__(self, driver) -> None:
         self.driver = driver
-        self.wait = WebDriverWait(self.driver, 2)
+        self.wait = WebDriverWait(self.driver, 1)
 
     def click(self, locator):
         elemento = self.wait.until(EC.element_to_be_clickable(locator))
