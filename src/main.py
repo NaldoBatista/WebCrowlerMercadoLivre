@@ -11,14 +11,14 @@ def web_crowler_mercado_livre_ofertas(num_pages: int):
     # Esse laço percorre as páginas de oferta previamente definidas
     for pagina in range(1, num_pages + 1):
         # Esse laço percorre todos os 48 produtos de cada página
-        for produto in range(1, 3):
+        for produto in range(1, 49):
             dados_produto = raspar_dados.raspar_dados_produto(produto, pagina)
             lista_dados_produtos.append(dados_produto)
         ofertas_page.proxima_pagina()
     return lista_dados_produtos
 
 if __name__ == '__main__':
-    numero_de_paginas = 1
+    numero_de_paginas = 2
     lista_dados_produtos = []
 
     lista_dados_produtos =  web_crowler_mercado_livre_ofertas(numero_de_paginas)
