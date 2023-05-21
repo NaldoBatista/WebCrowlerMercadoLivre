@@ -4,13 +4,22 @@ from selenium.webdriver.common.by import By
 class OfertasPage(ActionsBot):
     def __init__(self, driver) -> None:
         super().__init__(driver)
+
+    def mover_para_elemento(self, index_prod: int, numPage: int):
+        try:
+            self.move_to_element(
+                (By.XPATH, f'//*[@id="root-app"]/div[2]/div[2]/div/ol/li[{index_prod}]'))
+        except Exception as e:
+            print(e)
+            print(f'Falha ao mover para o elemento {index_prod} (página{numPage})')
+
     
     def get_nome_produto(self, index_prod: int, numPage: int):
         try:
             return self.get_text(
                 (By.XPATH, f'//*[@id="root-app"]/div[2]/div[2]/div/ol/li[{index_prod}]/div/a/div/div[2]/p')
             )
-        except:
+        except Exception as e:
             print(f'Falha ao pegar o nome do produto {index_prod} (página {numPage})')
     
     def get_valor_atual(self, index_prod: int, numPage: int):
@@ -18,7 +27,8 @@ class OfertasPage(ActionsBot):
             return self.get_text(
                 (By.XPATH, f'//*[@id="root-app"]/div[2]/div[2]/div/ol/li[{index_prod}]/div/a/div/div[2]/div[2]/div/span[1]/span[3]')
             )
-        except:
+        except Exception as e:
+          #print(e)
           print(f'Falha ao pegar o valor atual do produto {index_prod} (página {numPage})')  
     
     def get_valor_antigo(self, index_prod: int, numPage: int):
@@ -26,7 +36,8 @@ class OfertasPage(ActionsBot):
             return self.get_text(
                 (By.XPATH, f'//*[@id="root-app"]/div[2]/div[2]/div/ol/li[{index_prod}]/div/a/div/div[2]/div[2]/s/span[3]')
             )
-        except:
+        except Exception as e:
+            #print(e)
             print(f'Falha ao pegar o valor antigo do produto {index_prod} (página {numPage})')
     
     def get_desconto(self, index_prod: int, numPage: int):

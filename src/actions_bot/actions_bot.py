@@ -18,3 +18,7 @@ class ActionsBot(object):
     def get_link_img(self, locator):
         elemento = self.driver.find_element(*locator)
         return elemento.get_attribute('src')
+    
+    def move_to_element(self, locator):
+        elemento = self.driver.find_element(*locator)
+        self.driver.execute_script("arguments[0].scrollIntoView();", elemento)

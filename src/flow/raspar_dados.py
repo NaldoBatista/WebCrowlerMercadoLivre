@@ -7,6 +7,7 @@ class RasparDados(object):
     def raspar_dados_produto(self, index_prod: int, num_page: int):
         produto_atributos = {}
         ofertas_page = OfertasPage(self.driver)
+        ofertas_page.mover_para_elemento(index_prod, num_page)
         produto_atributos["nome_do_produto"] = ofertas_page.get_nome_produto(index_prod, num_page)
         produto_atributos["valor_atual"] = ofertas_page.get_valor_atual(index_prod, num_page)
         produto_atributos["valor_antigo"] = ofertas_page.get_valor_antigo(index_prod, num_page)
