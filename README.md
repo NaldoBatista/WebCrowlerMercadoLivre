@@ -6,9 +6,12 @@ Essa solucao consiste em um RPA (Robotic Process Automatic) para raspar dados da
 Para o desenvolvimeto dessa solução foi utilizada a linguagem de programação python e o framework selenium.
 
 ### Requiriments
-Para a execução desse script é precisso as seguintes tecnologias:  
+Para a produção desse projeto foram utilizadas as seguintes tecnologias:  
 Python 3.11.3  
-Selenium 4.9.1
+Selenium 4.9.1  
+Chrome 113.0.5672.127  
+ChromeDriver 113.0.5672.24
+
 
 ### Funcionamento 
 A ideia principal desse projeto é percorrer todos os produtos da página de ofertas coletando todos os atributos do produto em quantas páginas o usuário desejar. 
