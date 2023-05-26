@@ -1,9 +1,27 @@
 from actions_bot.actions_bot import ActionsBot
 from selenium.webdriver.common.by import By
+from time import sleep
+
+class OfertasPageLocators(object):  
+    link_inserir_cep = (By.XPATH, '/html/body/header/div/div[4]/div/a')
+    iframe_cep = (By.XPATH, '/html/body/div[3]/div[1]/iframe')
+    input_inserir_cep = (By.XPATH, '//*[@id="addressesForm"]/div/div/div/div[1]/label/div/input')
+    btn_usar = (By.XPATH, '//*[@id="addressesForm"]/div/div/div/div[1]/label/div/div/button')
+
 
 class OfertasPage(ActionsBot):
     def __init__(self, driver) -> None:
         super().__init__(driver)
+
+    def inserir_cep(self):
+        self.click(OfertasPageLocators.link_inserir_cep)
+        sleep(10)
+        iframe_cep = self.driver.find_element(By.XPATH, '/html/body/div[4]/div[1]/iframe')
+        self.driver.switch_to.frame(iframe_cep)
+        self.write(OfertasPageLocators.input_inserir_cep, '49100000')
+        self.click(OfertasPageLocators.btn_usar)
+        self.driver.switch_to.default_content()
+        sleep(1)
 
     def mover_para_elemento(self, index_prod: int, num_page: int):
         try:

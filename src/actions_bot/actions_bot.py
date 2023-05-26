@@ -25,4 +25,5 @@ class ActionsBot(object):
 
     def write(self, locator, text: str):
         element = self.wait.until(EC.visibility_of_element_located(locator))
-        element.clear().send_keys(text)
+        element.clear()
+        element.send_keys(text)

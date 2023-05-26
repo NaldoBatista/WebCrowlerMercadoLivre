@@ -7,9 +7,6 @@ from time import sleep
 driver = create_driver()
 ofertas_page = OfertasPage(driver)
 produto_page = ProdutoPage(driver)
-ofertas_page.go_pagina_produto(1, 1)
+ofertas_page.go_pagina_produto(7, 1)
 produto_page.inserir_cep()
-
-
-sleep(4)
-
+produto_page.calcular_prazo_frete()
