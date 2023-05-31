@@ -1,11 +1,14 @@
 from flow.raspar_dados import RasparDados
 from pages.ofertas_page import OfertasPage
 from utils.utils import create_driver, gerar_json
+from time import sleep
 
 def web_crowler_mercado_livre_ofertas(num_pages: int):
     driver = create_driver()
+    ofertas_page = OfertasPage(driver)
+    ofertas_page.inserir_cep()
+    sleep(400)
     raspar_dados = RasparDados(driver)
-    ofertas_page = OfertasPage(driver).inserir_cep()
     lista_dados_produtos = []
 
     # Esse laço percorre as páginas de oferta previamente definidas
@@ -18,7 +21,7 @@ def web_crowler_mercado_livre_ofertas(num_pages: int):
     return lista_dados_produtos
 
 if __name__ == '__main__':
-    numero_de_paginas = 2
+    numero_de_paginas = 1
     lista_dados_produtos = []
 
     lista_dados_produtos =  web_crowler_mercado_livre_ofertas(numero_de_paginas)
