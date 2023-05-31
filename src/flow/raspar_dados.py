@@ -1,4 +1,5 @@
 from pages.ofertas_page import OfertasPage
+from pages.produto_page import ProdutoPage
 
 class RasparDados(object):
     def __init__(self, driver) -> None:
@@ -14,5 +15,9 @@ class RasparDados(object):
         produto_atributos["desconto"] = ofertas_page.get_desconto(index_prod, num_page)
         produto_atributos["link_da_imagem"] = ofertas_page.get_link_imagem(index_prod, num_page)
         produto_atributos["nome_da_loja_vendedora"] = ofertas_page.get_nome_loja(index_prod, num_page)
+        ofertas_page.go_pagina_produto(index_prod, num_page)
+        produto_page = ProdutoPage(self.driver)
+        produto_atributos["prazo_do_frete"] = produto_page.calcular_prazo_frete(index_prod, num_page)
+        produto_page.go_ofertas_page()
         return produto_atributos
 
