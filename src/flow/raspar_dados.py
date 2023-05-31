@@ -17,7 +17,7 @@ class RasparDados(object):
         produto_atributos["nome_da_loja_vendedora"] = ofertas_page.get_nome_loja(index_prod, num_page)
         ofertas_page.go_pagina_produto(index_prod, num_page)
         produto_page = ProdutoPage(self.driver)
-        produto_atributos["prazo_do_frete"] = produto_page.calcular_prazo_frete()
+        produto_atributos["prazo_do_frete"] = produto_page.calcular_prazo_frete(index_prod, num_page)
         produto_page.go_ofertas_page()
         return produto_atributos
 

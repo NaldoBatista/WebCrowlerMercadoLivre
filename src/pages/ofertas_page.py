@@ -99,5 +99,7 @@ class OfertasPage(ActionsBot):
             print('Falha ao ir para proxima página!')
 
     def go_pagina_produto(self, index_prod: int, num_page: int):
-        self.click((By.XPATH, f'//*[@id="root-app"]/div[2]/div[2]/div/ol/li[{index_prod}]'))
-
+        try:
+            self.click((By.XPATH, f'//*[@id="root-app"]/div[2]/div[2]/div/ol/li[{index_prod}]'))
+        except:
+            print("Falha ao ir para página do produto")
